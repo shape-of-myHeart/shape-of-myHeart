@@ -1,0 +1,185 @@
+html, body{
+    width:100%;
+    height:100%;
+    margin:0;
+    background-color: #000;
+}
+.clear,
+.container > .content-wrap::after{
+    content:'';
+    display: block;
+    clear: both;
+}
+*{
+    box-sizing:border-box;
+    font-family: "맑은 고딕";
+}
+.container,
+.container::after{
+    background-image: url('./resources/wallpaper.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    
+}
+.container{
+    position:relative;
+    left:0;
+    right:0;
+    margin:0 auto;
+
+    width:100%;
+    height:100%;
+    max-width:1600px;
+
+    background-size:auto 100%;
+    overflow: hidden;
+    animation:container-background-animation 30s infinite linear;
+}
+.container::after{
+    content:'';
+    position: absolute;
+    top:0;
+    bottom:0;
+    
+    width:100%;
+    height:50%;
+
+    margin:auto;
+
+    background-size:auto 200%;
+    animation: container-background-animation 30s infinite linear;
+
+    filter:blur(5px);
+}
+
+.container > .content-wrap{
+    position:absolute;
+    top:0;
+    bottom:0;
+
+    width:100%;
+    height:0%;
+
+    margin:auto;
+    background:rgba(0,0,0,0.4);
+    z-index:100;
+    overflow: hidden;
+    
+    animation:container-content-slide 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.content-wrap.has-navbar{
+    padding-left:200px;
+}
+
+.content-wrap nav.navbar{
+    position: absolute;
+    top:0;
+    left:0;
+    width:200px;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+.content-wrap nav.navbar > div.active{
+    background:rgba(150,150,150,0.1)!important;
+    cursor:default;
+}
+.content-wrap nav.navbar > div.title{
+    padding-left:15px;
+    margin-bottom:1px;
+
+    font-size:2em;
+    background:rgba(255,255,255,0.1)!important;
+
+    cursor:default;
+}
+.content-wrap nav.navbar > div{
+    width:100%;
+    padding:10px 30px;
+
+    color:#fff;
+
+    user-select: none;
+    cursor: pointer;
+}
+.content-wrap nav.navbar > div:hover{
+    background:rgba(255,255,255,0.1);
+}
+.content-wrap nav.navbar > div:active{
+    background:rgba(200,200,200,0.1);
+}
+
+/* block */
+.content-wrap > .sub-block{
+    float:left;
+    width:30%;
+    height:100%;
+    padding-left:1px;
+
+    filter:blur(10px);
+
+    animation: sub-block-show 3s;
+    animation-fill-mode: forwards;
+}
+
+/* note */
+.content-wrap .note {
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0, 0.15);
+}
+
+.content-wrap .note > span.title{
+    background:none!important;
+    font-size:1.5em;
+    padding:10px;
+    margin-bottom:1px;
+    cursor:default;
+}
+
+.content-wrap .note > span{
+    display: block;
+    width:100%;
+    padding:8px 15px 8px 20px;
+
+    color:#fff;
+
+    cursor:pointer;
+    transition:background 0.2s;
+    user-select: none;
+}
+.content-wrap .note > span:hover,
+.content-wrap .note > span:nth-child(2n):hover
+{
+    background:rgba(255, 255, 255 ,0.2);
+}
+.content-wrap .note > span:active,
+.content-wrap .note > span:nth-child(2n):active
+{
+    background:rgba(255, 255, 255 ,0.1);
+}
+
+.content-wrap .note > span:nth-child(2n){
+    background:rgba(0,0,0, 0.25);
+}
+
+@keyframes container-background-animation{
+    50%{
+        background-position: 100% 50%;
+    }
+}
+@keyframes container-content-slide{
+    100%{
+        height:50%;
+    }
+}
+@keyframes sub-block-show{
+    50%{
+        filter:blur(10px);
+    }
+    100%{
+        filter:blur(0);
+    }
+}
